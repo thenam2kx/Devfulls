@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chill Beats - Create by Devfulls",
+  title: "My Portfolio - Create by Devfulls",
   description: "Create by Devfulls",
 };
 
