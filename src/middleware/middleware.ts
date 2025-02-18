@@ -1,10 +1,9 @@
-import createMiddleware from 'next-intl/middleware';
+import { match } from '@formatjs/intl-localematcher'
+import Negotiator from 'negotiator'
 
-export default createMiddleware({
-  locales: ['en', 'vi'],
-  defaultLocale: 'en',
-});
+const headers = { 'accept-language': 'en-US,en;q=0.5' }
+const languages = new Negotiator({ headers }).languages()
+const locales = ['en-US', 'nl-NL', 'nl']
+const defaultLocale = 'en-US'
 
-export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'],
-};
+match(languages, locales, defaultLocale) // -> 'en-US'

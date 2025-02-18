@@ -3,6 +3,8 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useTranslation } from "@/config/i18n/server";
 import LanguageSwitcher from '@/components/language.switcher';
+import ThemeSelect from '@/components/theme/select.theme';
+import AppHeader from '@/components/header/app.header';
 
 
 export default async function Home() {
@@ -23,8 +25,10 @@ export default async function Home() {
         }}
       />
       <Container sx={{ position: 'relative', zIndex: 1 }}>
+        {/* <h1>{t("welcome")}</h1> */}
+        <AppHeader />
         <LanguageSwitcher />
-        <h1>{t("welcome")}</h1>
+        <ThemeSelect />
       </Container>
 
     </Box>
