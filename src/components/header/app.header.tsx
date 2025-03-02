@@ -37,9 +37,9 @@ const AppHeader = () => {
   const menuItems = [
     { name: "</Home>", href: "#" },
     { name: "</AboutMe>", href: "#about" },
-    { name: "</Work Experience>", href: "#experience" },
+    { name: "</Work Experience>", href: "/projects" },
     { name: "</Blogs and Publications>", href: "#blogs" },
-    { name: "</Projects>", href: "#projects" },
+    { name: "</Projects>", href: "/projects" },
   ];
 
   return (
@@ -96,7 +96,7 @@ const AppHeader = () => {
                 <Typography
                   key={item.name}
                   variant="body1"
-                  component="a"
+                  component={Link}
                   href={item.href}
                   sx={{
                     textDecoration: "none",
