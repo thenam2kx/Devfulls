@@ -35,7 +35,7 @@ const AppHeader = () => {
   };
 
   const menuItems = [
-    { name: "</Home>", href: "#" },
+    { name: "</Home>", href: "/" },
     { name: "</AboutMe>", href: "#about" },
     { name: "</Work Experience>", href: "/projects" },
     { name: "</Blogs and Publications>", href: "#blogs" },
@@ -45,7 +45,7 @@ const AppHeader = () => {
   return (
     <AppBar
       position="static"
-      sx={{ bgcolor: "#171724", boxShadow: "none" }}
+      sx={{ bgcolor: "transparent", boxShadow: "none", backgroundImage: 'none' }}
     >
       <Container>
         <Toolbar
@@ -113,7 +113,7 @@ const AppHeader = () => {
             </Box>
           )}
 
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Link
               href="https://drive.google.com/file/d/1oIYzKtMotMvK-WIMA2ZX4bp_MuVf6tpe/view"
               target="_blank"
