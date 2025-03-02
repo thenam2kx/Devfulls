@@ -8,8 +8,52 @@ const roboto = Roboto({
   display: 'swap',
 });
 
+declare module '@mui/material/styles' {
+  interface Theme {
+    devFulls: {
+      appHeader: string
+      appFooter: string
+      appContent: string
+    };
+  }
+  interface ThemeOptions {
+    devFulls?: {
+      appHeader?: string
+      appFooter?: string
+      appContent?: string
+    };
+  }
+}
+
+const APP_HEADER = '50px'
+const APP_FOOTER = '40px'
+const APP_CONTENT = `calc(100vh - ${APP_HEADER} - ${APP_FOOTER})`
+
 const theme = createTheme({
-  colorSchemes: { light: true, dark: false },
+  devFulls: {
+    appHeader: APP_HEADER,
+    appFooter: APP_FOOTER,
+    appContent: APP_CONTENT
+  },
+
+  colorSchemes: {
+    light: {
+      palette: {
+        text: {
+          primary: '#000',
+          secondary: 'hsl(0deg 0% 100% / 50%)'
+        }
+      }
+    },
+    dark: {
+      palette: {
+        text: {
+          primary: '#dee2e6',
+          secondary: 'hsl(0deg 0% 100% / 50%)'
+        }
+      }
+    }
+  },
   cssVariables: {
     colorSchemeSelector: 'class',
   },
