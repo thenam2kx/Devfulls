@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from "@/config/theme/theme";
+
+const inter = Inter({ subsets: ["latin"] })
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}>
         <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>

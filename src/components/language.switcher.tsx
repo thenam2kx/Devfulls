@@ -6,8 +6,7 @@ import i18next from "@/config/i18n/client";
 
 const LanguageSwitcher = () => {
   const router = useRouter();
-  const [language, setLanguage] = useState(i18next.language);
-  console.log('🚀 ~ LanguageSwitcher ~ language:', language)
+  const [language, setLanguage] = useState(i18next.language)
 
   const changeLanguage = async (lng: string) => {
     await i18next.changeLanguage(lng);
