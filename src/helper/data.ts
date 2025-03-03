@@ -41,3 +41,15 @@ export const PROJECTS = [
     demoLink: 'https://github.com/thenam2kx/Seven-store'
   },
 ]
+
+export const SKILLS_DATA = ['HTML', 'CSS', 'Javascript', 'Typescript', 'React', 'Next JS', 'Tailwind', 'MongoDB', 'MySQL', 'Git', 'Bootstrap', 'Docker', 'Figma', 'MaterialUI']
+
+
+export const EXPERIENCES = [
+  {
+    id: 1,
+    title: 'Fullstack Developer',
+    company: 'No company',
+    duration: 'August 2023 - Present'
+  }
+]

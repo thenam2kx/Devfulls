@@ -35,24 +35,36 @@ const AppHeader = () => {
   };
 
   const menuItems = [
-    { name: "</Home>", href: "/" },
-    { name: "</AboutMe>", href: "#about" },
-    { name: "</Work Experience>", href: "/projects" },
-    { name: "</Blogs and Publications>", href: "#blogs" },
-    { name: "</Projects>", href: "/projects" },
+    { name: "<Home/>", href: "/" },
+    { name: "<AboutMe/>", href: "#about" },
+    { name: "<Experience/>", href: "/projects" },
+    { name: "<Blogs/>", href: "/blogs" },
+    { name: "<Projects/>", href: "/projects" },
   ];
 
   return (
     <AppBar
-      position="static"
-      sx={{ bgcolor: "transparent", boxShadow: "none", backgroundImage: 'none' }}
+      sx={{
+        bgcolor: "transparent!important",
+        boxShadow: "none",
+        backgroundImage: 'none',
+        position: 'fixed',
+        top: '20px',
+        left: 0,
+        zIndex: 999,
+      }}
     >
-      <Container>
+      <Container maxWidth="lg" sx={{
+        backgroundImage: 'linear-gradient(to bottom right, #1a1a29, rgb(27 27 40 / 0%))',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '50px',
+      }}>
         <Toolbar
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            padding: '0!important',
           }}
         >
           <Box

@@ -75,7 +75,7 @@ const blinkTypingAnimate = keyframes`
 const Hero = () => {
   return (
     <Box component={'section'} sx={{
-      height: 'calc(100vh - 64px)',
+      height: '100vh',
       position: 'relative',
       overflow: 'hidden'
     }}>
