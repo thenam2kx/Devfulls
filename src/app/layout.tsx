@@ -5,7 +5,7 @@ import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from "@/config/theme/theme";
-import AppHeader from "@/components/header/app.header";
+import { AppContextProvider } from "@/context/app.context";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -36,8 +36,9 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppHeader />
-            {children}
+            <AppContextProvider>
+              {children}
+            </AppContextProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
