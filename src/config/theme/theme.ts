@@ -1,12 +1,5 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { Roboto } from 'next/font/google';
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -23,6 +16,26 @@ declare module '@mui/material/styles' {
       appContent?: string
     };
   }
+
+  interface Palette {
+    custom: {
+      notificationBar: string
+      notificationBorder: string
+      activeLink: string
+      inactiveLink: string
+      buttonHover: string
+    }
+  }
+
+  interface PaletteOptions {
+    custom?: {
+      notificationBar?: string
+      notificationBorder?: string
+      activeLink?: string
+      inactiveLink?: string
+      buttonHover?: string
+    }
+  }
 }
 
 const APP_HEADER = '50px'
@@ -36,51 +49,71 @@ const theme = createTheme({
     appContent: APP_CONTENT
   },
 
-  colorSchemes: {
-    light: {
-      palette: {
-        text: {
-          primary: '#000',
-          secondary: 'hsl(0deg 0% 100% / 50%)'
-        }
-      }
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#ffd11a",
+      contrastText: "#1a1a1a",
     },
-    dark: {
-      palette: {
-        text: {
-          primary: '#dee2e6',
-          secondary: 'hsl(0deg 0% 100% / 50%)'
-        }
-      }
-    }
-  },
-  cssVariables: {
-    colorSchemeSelector: 'class',
+    secondary: {
+      main: "#98989a",
+      light: "#ffffff",
+      dark: "#7e7e81",
+    },
+    background: {
+      default: "#1a1a1a",
+      paper: "#262626",
+    },
+    text: {
+      primary: "#ffffff",
+      secondary: "#98989a",
+    },
+    divider: "#333333",
+
+    custom: {
+      notificationBar: "#141414",
+      notificationBorder: "#262626",
+      activeLink: "#ffffff",
+      inactiveLink: "#98989a",
+      buttonHover: "#e6bc18",
+    },
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
   },
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        root: {
-          variants: [
-            {
-              props: { severity: 'info' },
-              style: {
-                backgroundColor: '#60a5fa',
-              },
-            },
-          ],
-        },
-        // root: ({ ownerState }) => ({
-        //   ...(ownerState.severity === 'info' && {
-        //     backgroundColor: '#60a5fa',
-        //   }),
-        // }),
-      },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
     },
   },
+  shape: {
+    borderRadius: 4,
+  },
 });
+
+  // colorSchemes: {
+  //   light: {
+  //     palette: {
+  //       text: {
+  //         primary: '#000',
+  //         secondary: 'hsl(0deg 0% 100% / 50%)'
+  //       }
+  //     }
+  //   },
+  //   dark: {
+  //     palette: {
+  //       text: {
+  //         primary: '#dee2e6',
+  //         secondary: 'hsl(0deg 0% 100% / 50%)'
+  //       }
+  //     }
+  //   }
+  // },
+  // },
+
 
 export default theme;

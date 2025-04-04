@@ -8,7 +8,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
 
   return (
     <AppContext.Provider value={{ color, setColor }}>
-        {children}
+      {children}
     </AppContext.Provider>
   )
 };
