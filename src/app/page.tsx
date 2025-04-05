@@ -8,7 +8,7 @@ import Introduction from '@/components/home/introduction.home';
 export default function Home() {
 
   return (
-    <Box component={'main'} sx={{ flexGrow: 1, minHeight: '100vh', bgcolor: '#141414' }}>
+    <Box component={'main'} sx={{ flexGrow: 1, minHeight: '100vh', bgcolor: "rgb(13 18 36)" }}>
       <Container maxWidth='xl' sx={{ py: { xs: 8 } }}>
         <Introduction />
         <Experiences />

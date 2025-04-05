@@ -109,7 +109,7 @@ const AppFooter = () => {
   }
 
   return (
-    <Box component="footer" sx={{ pt: 6, pb: 4, backgroundColor: '#141414' }}>
+    <Box component="footer" sx={{ pt: 6, pb: 4, backgroundColor: theme.palette.background.default }}>
       <Divider sx={{ borderColor: theme.palette.divider, mb: 5 }} />
       <Container maxWidth="xl">
         <Grid container spacing={isMobile ? 4 : 6}>

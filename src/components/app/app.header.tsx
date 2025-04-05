@@ -24,7 +24,7 @@ import { useTheme } from "@mui/material/styles"
 
 // Custom styled components using theme
 const NotificationBar = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.custom.notificationBar,
+  backgroundColor: theme.palette.background.paper,
   color: theme.palette.text.primary,
   padding: "8px 0",
   display: "flex",
@@ -115,7 +115,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 // Navigation links
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Blogs", href: "/blog" },
+  { name: "Blogs", href: "/blogs" },
   { name: "Podcasts", href: "/podcasts" },
   { name: "Resources", href: "/resources" },
 ]
@@ -132,7 +132,7 @@ const AppHeader = () => {
   }
 
   const drawer = (
-    <Box sx={{ width: 250, backgroundColor: theme.palette.background.default, height: "100%" }}>
+    <Box sx={{ width: 250, backgroundColor: theme.palette.background.default, height: "100%" }} onClick={handleDrawerToggle}>
       <DrawerHeader>
         <Logo>
           <LogoIcon />
@@ -187,7 +187,7 @@ const AppHeader = () => {
           <ArrowOutwardIcon sx={{ ml: 1, fontSize: isSmall ? "0.8rem" : "1rem" }} />
         </Typography>
       </NotificationBar>
-      <AppBar position="static" sx={{ backgroundColor: '#1A1A1A', boxShadow: "none", backgroundImage: "none" }}>
+      <AppBar position="static" sx={{ backgroundColor: theme.palette.background.default, boxShadow: "none", backgroundImage: "none" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Link href="/" passHref style={{ textDecoration: "none", color: "inherit" }}>
