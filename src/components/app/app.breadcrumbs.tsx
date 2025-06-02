@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useTheme } from "@mui/material/styles";
-import { blogPost } from "../blog/detail/BlogDetail";
 
 const AppBreadcrumbs = () => {
   const theme = useTheme();
@@ -60,7 +59,6 @@ const AppBreadcrumbs = () => {
           }}
         >
           <LocalOfferIcon sx={{ fontSize: 16 }} />
-          {blogPost.categories[0]}
         </Typography>
       </Breadcrumbs>
     </Fade>

@@ -1,28 +1,18 @@
-// app/[locale]/page.tsx
-'use client';
-import {useLocale, useTranslations} from 'next-intl';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
+import {useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
+import Box from '@mui/material/Box';
+import Container from "@mui/material/Container";
 
 export default function HomePage() {
-  const t = useTranslations('home');
-
-  const router = useRouter();
-  const pathname = usePathname();
-  const currentLocale = useLocale();
-
-  const changeLanguage = (locale: string) => {
-    const segments = pathname.split('/');
-    segments[1] = locale;
-    router.push(segments.join('/'));
-  };
-
+  const t = useTranslations('HomePage');
   return (
-    <main>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
-      <button onClick={() => changeLanguage('vi')}>Tiếng Việt</button>
-      <button onClick={() => changeLanguage('en')}>English</button>
-    </main>
+    <Box component={'main'} sx={{ flexGrow: 1, minHeight: '100vh', bgcolor: "rgb(13 18 36)" }}>
+      <Container maxWidth='xl' sx={{ py: { xs: 8 } }}>
+        <div>
+          <h1>{t('title')}</h1>
+          <Link href="/about">{t('about')}</Link>
+        </div>
+      </Container>
+    </Box>
   );
 }

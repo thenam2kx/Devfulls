@@ -1,6 +1,22 @@
 {
-  "home": {
-    "title": "Welcome",
-    "description": "This is the homepage"
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "header": {
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "blog": "Blog",
+      "resources": "Resources",
+      "services": "Services"
+    },
+    "btn": {
+      "login": "Login",
+      "register": "Register",
+      "logout": "Logout",
+      "contact": "Contact me"
+    }
   }
 }

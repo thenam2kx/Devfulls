@@ -1,28 +1,64 @@
-// app/[locale]/layout.tsx
+import type { Metadata } from "next";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from "@/config/theme/theme";
+import { AppContextProvider } from "@/context/app.context";
+import AppHeader from "@/components/app/app.header";
+import AppFooter from "@/components/app/app.footer";
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
-import {getMessages} from 'next-intl/server';
-import LocaleProvider from '@/components/app/locale.provider';
+import {routing} from '@/i18n/routing';
 
-export function generateStaticParams() {
-  return [{locale: 'vi'}, {locale: 'en'}];
-}
+const inter = Inter({ subsets: ["latin"] })
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "My Portfolio - Create by Devfulls",
+  description: "Create by Devfulls",
+};
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
+  params
 }: {
   children: React.ReactNode;
-  params: {locale: string};
+  params: Promise<{locale: string}>;
 }) {
-  const messages = await getMessages();
-
-  if (!['vi', 'en'].includes(locale)) {
+  // Ensure that the incoming `locale` is valid
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   return (
-    <LocaleProvider locale={locale} messages={messages}>
-      {children}
-    </LocaleProvider>
+    <html lang={locale}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}>
+        <NextIntlClientProvider>
+          <InitColorSchemeScript attribute="class" />
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <AppContextProvider>
+                <AppHeader />
+                {children}
+                <AppFooter />
+              </AppContextProvider>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

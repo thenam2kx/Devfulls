@@ -1,21 +1,12 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',
     },
-  },
-
-  experimental: {
-    serverActions: {}
-  },
-
-  i18n: {
-    locales: ['en', 'vi'],
-    defaultLocale: 'en',
   },
 
   // Enable image optimization
@@ -31,4 +22,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);

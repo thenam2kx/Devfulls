@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Toolbar from "@mui/material/Toolbar"
@@ -21,6 +20,9 @@ import ListItemButton from "@mui/material/ListItemButton"
 import ListItemText from "@mui/material/ListItemText"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { useTheme } from "@mui/material/styles"
+import { useTranslations } from "next-intl"
+import { useMemo, useState } from "react"
+import LanguageSwitcher from "../header/language.switch"
 
 // Custom styled components using theme
 const NotificationBar = styled(Box)(({ theme }) => ({
@@ -112,20 +114,24 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.divider}`,
 }))
 
-// Navigation links
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Blogs", href: "/blogs" },
-  { name: "Podcasts", href: "/podcasts" },
-  { name: "Resources", href: "/resources" },
-]
 
 const AppHeader = () => {
   const pathname = usePathname()
   const theme = useTheme()
+  const t = useTranslations('header');
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Navigation links
+const navItems = useMemo(() => [
+  { name: t("menu.home"), href: "/" },
+  { name: t("menu.about"), href: "/about" },
+  { name: t("menu.contact"), href: "/contact" },
+  { name: t("menu.blog"), href: "/blog" },
+  { name: t("menu.resources"), href: "/resources" },
+  { name: t("menu.services"), href: "/services" },
+], [t])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -164,7 +170,7 @@ const AppHeader = () => {
         ))}
         <ListItem sx={{ mt: 2, px: 2 }}>
           <ContactButton fullWidth variant="contained" disableElevation>
-            Contact Me
+            {t("btn.contact")}
           </ContactButton>
         </ListItem>
       </List>
@@ -228,8 +234,10 @@ const AppHeader = () => {
                   ))}
                 </Box>
 
-                <ContactButton variant="contained" disableElevation>
-                  Contact Me
+                <LanguageSwitcher />
+
+                <ContactButton variant="contained" disableElevation sx={{ ml: 2 }}>
+                  {t("btn.contact")}
                 </ContactButton>
               </>
             )}

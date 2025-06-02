@@ -1,6 +1,22 @@
 {
-  "home": {
-    "title": "Chào mừng",
-    "description": "Đây là trang chủ"
+  "HomePage": {
+    "title": "Xin Chào!",
+    "about": "Đi đến trang giới thiệu"
+  },
+  "header": {
+    "menu": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "contact": "Liên hệ",
+      "blog": "Blog",
+      "resources": "Tài nguyên",
+      "services": "Dịch vụ"
+    },
+    "btn": {
+      "login": "Đăng nhập",
+      "register": "Đăng ký",
+      "logout": "Đăng xuất",
+      "contact": "Liên hệ với tôi"
+    }
   }
 }
