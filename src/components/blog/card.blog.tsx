@@ -9,18 +9,23 @@ import Link from 'next/link';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
+interface IProps {
+  blogData: IBlog
+}
 
-const CardBlog = () => {
+const CardBlog = (props: IProps) => {
+  const { blogData } = props
+
   return (
     <Card sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', borderRadius: '0.5rem' }}>
       <CardMedia
         component="img"
         height="256"
-        image="http://localhost:3000/avatar.svg"
+        image={blogData.avatar || 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBhZWxsZXxlbnwwfHx8fDE2ODQ1NTY5MjE&ixlib=rb-4.0.3&q=80&w=1080'}
         alt="Paella dish"
       />
       <CardContent>
-        <Typography component={Link} href={'/blogs/1'} sx={{
+        <Typography component={Link} href={`/blogs/${blogData._id}`} sx={{
             fontSize: '1.2rem',
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -30,7 +35,7 @@ const CardBlog = () => {
             color: 'text.primary',
             textDecoration: 'none',
         }}>
-          {'http://localhost:3000/avatar.svg http://localhost:3000/avatar.svghttp://localhost:3000.svg'}
+          {blogData.title}
         </Typography>
         <Typography sx={{
           fontSize: '0.875rem',
@@ -41,7 +46,7 @@ const CardBlog = () => {
           textOverflow: 'ellipsis',
           overflow: 'hidden'
         }}>
-          {'http://localhost:3000/avatar.svghttp://localhost:3000/avatar.svg'}
+          {blogData.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

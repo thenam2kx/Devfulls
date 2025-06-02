@@ -10,7 +10,7 @@ import { blogPost } from "./BlogDetail";
 import AuthorBlog from "./author.blog";
 
 
-const HeaderBlogDetail = () => {
+const HeaderBlogDetail = ({ infoBlogs }: { infoBlogs: IBlog }) => {
   const theme = useTheme();
   const isLoading = false;
 
@@ -86,7 +86,7 @@ const HeaderBlogDetail = () => {
                 )}`,
               }}
             >
-              {blogPost.title}
+              {infoBlogs.title}
             </Typography>
 
             <Typography
@@ -100,7 +100,7 @@ const HeaderBlogDetail = () => {
                 maxWidth: "90%",
               }}
             >
-              {blogPost.subtitle}
+              {infoBlogs.title}
             </Typography>
 
             <AuthorBlog />

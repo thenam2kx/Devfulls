@@ -22,210 +22,13 @@ import HeroBlogDetail from "./hero.blog.detail";
 import AppBreadcrumbs from "@/components/app/app.breadcrumbs";
 import ContentBlogDetail from "./content.blog.detail";
 
-// Sample blog data - in a real app, this would come from an API or props
-export const blogPost = {
-  title: "Understanding Modern Web Development Frameworks",
-  subtitle:
-    "A deep dive into the technologies shaping the future of web development",
-  publishDate: "April 2, 2025",
-  readTime: "8 min read",
-  views: "3.2K",
-  likes: 142,
-  comments: 38,
-  author: {
-    name: "Alex Johnson",
-    avatar: "/placeholder.svg?height=50&width=50",
-    role: "Senior Developer",
-    bio: "Alex has been developing web applications for over 10 years and specializes in React and modern JavaScript frameworks. He is passionate about creating performant and accessible web experiences.",
-    twitter: "@alexjohnson",
-    website: "alexjohnson.dev",
-  },
-  categories: ["Web Development", "React", "JavaScript"],
-  tags: [
-    "frontend",
-    "frameworks",
-    "performance",
-    "architecture",
-    "best practices",
-  ],
-  heroImage: "/placeholder.svg?height=500&width=1000",
-  content: `
-    <p>Modern web development has evolved significantly over the past decade. Frameworks like React, Angular, and Vue have revolutionized how developers build interactive user interfaces.</p>
-    
-    <h2>The Rise of Component-Based Architecture</h2>
-    <p>One of the most significant shifts in modern web development has been the move toward component-based architecture. This approach allows developers to build encapsulated components that manage their own state, then compose them to make complex UIs.</p>
-    
-    <p>Components are reusable, which means you can use the same component in multiple places in your application, or even across different applications. This reusability leads to more consistent UIs and faster development cycles.</p>
-    
-    <figure>
-      <img src="/placeholder.svg?height=300&width=600" alt="Component architecture diagram" />
-      <figcaption>Modern component architecture enables better code organization and reusability</figcaption>
-    </figure>
-    
-    <h2>State Management</h2>
-    <p>As applications grow in complexity, managing state becomes increasingly challenging. Libraries like Redux, MobX, and Recoil have emerged to help developers manage application state in a predictable way.</p>
-    
-    <p>These state management solutions provide a centralized store for all the data your application needs. This makes it easier to debug and test your application, as the data flow becomes more predictable.</p>
-    
-    <pre><code class="language-javascript">
-// Example of Redux state management
-import { createStore } from 'redux';
-
-// Reducer function
-function counterReducer(state = { count: 0 }, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    default:
-      return state;
-  }
+interface IProps {
+  infoBlogs: IBlog;
 }
 
-// Create store
-const store = createStore(counterReducer);
+export default function BlogDetail(props: IProps) {
+  const { infoBlogs } = props;
 
-// Dispatch actions
-store.dispatch({ type: 'INCREMENT' });
-console.log(store.getState()); // { count: 1 }
-    </code></pre>
-    
-    <blockquote>
-      <p>"The future of web development is about creating fast, accessible, and engaging user experiences across all devices."</p>
-      <cite>— Sarah Chen, Web Performance Engineer at Google</cite>
-    </blockquote>
-    
-    <h2>Server-Side Rendering and Static Site Generation</h2>
-    <p>Performance and SEO considerations have led to the popularity of server-side rendering (SSR) and static site generation (SSG). Frameworks like Next.js and Gatsby have made it easier to implement these techniques.</p>
-    
-    <pre><code class="language-typescript">
-// Example of a Next.js page with SSG
-import { GetStaticProps } from 'next';
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-}
-
-interface BlogPageProps {
-  posts: Post[];
-}
-
-export const getStaticProps: GetStaticProps<BlogPageProps> = async () => {
-  // Fetch data at build time
-  const res = await fetch('https://api.example.com/posts');
-  const posts = await res.json();
-  
-  return {
-    props: { posts },
-    // Re-generate at most once per hour
-    revalidate: 3600,
-  };
-};
-
-export default function BlogPage({ posts }: BlogPageProps) {
-  return (
-    <div>
-      <h1>Blog Posts</h1>
-      <ul>
-        {posts.map(post => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-    </code></pre>
-    
-    <p>SSR renders the HTML on the server before sending it to the client, which can lead to faster initial page loads and better SEO. SSG takes this a step further by generating HTML at build time, which can be served from a CDN for even better performance.</p>
-    
-    <h2>The Importance of Performance Optimization</h2>
-    <p>With users expecting faster and more responsive web applications, performance optimization has become a critical aspect of modern web development. Techniques like code splitting, lazy loading, and image optimization are essential for delivering a great user experience.</p>
-    
-    <p>Modern frameworks and build tools have built-in support for these optimization techniques, making it easier for developers to create high-performance applications.</p>
-    
-    <h3>Key Performance Metrics</h3>
-    <ul>
-      <li><strong>First Contentful Paint (FCP)</strong>: Measures the time from navigation to when the browser renders the first bit of content from the DOM.</li>
-      <li><strong>Largest Contentful Paint (LCP)</strong>: Measures loading performance. To provide a good user experience, LCP should occur within 2.5 seconds of when the page first starts loading.</li>
-      <li><strong>Cumulative Layout Shift (CLS)</strong>: Measures visual stability. Pages should maintain a CLS of less than 0.1.</li>
-    </ul>
-    
-    <h2>Accessibility Considerations</h2>
-    <p>Building accessible web applications is not just a nice-to-have feature—it's essential for ensuring that your application can be used by everyone, including people with disabilities.</p>
-    
-    <pre><code class="language-jsx">
-// Example of accessible React component
-import React from 'react';
-
-function AccessibleButton({ onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      aria-label="Submit form"
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onClick();
-        }
-      }}
-    >
-      {children}
-    </button>
-  );
-}
-
-export default AccessibleButton;
-    </code></pre>
-
-    <p>Modern frameworks provide tools and patterns for building accessible applications, but it's up to developers to implement them correctly. This includes using semantic HTML, providing alternative text for images, ensuring sufficient color contrast, and making sure your application can be navigated using a keyboard.</p>
-  `,
-  relatedPosts: [
-    {
-      id: 1,
-      title: "Getting Started with React Hooks",
-      excerpt:
-        "Learn how to use React Hooks to simplify your components and reuse stateful logic.",
-      image: "/placeholder.svg?height=200&width=300",
-      date: "March 25, 2025",
-      author: "Jamie Smith",
-      category: "React",
-    },
-    {
-      id: 2,
-      title: "CSS-in-JS: Styled Components vs. Emotion",
-      excerpt:
-        "A comparison of the two most popular CSS-in-JS libraries for React applications.",
-      image: "/placeholder.svg?height=200&width=300",
-      date: "March 18, 2025",
-      author: "Taylor Wilson",
-      category: "CSS",
-    },
-    {
-      id: 3,
-      title: "Building Accessible Web Applications",
-      excerpt:
-        "Best practices for ensuring your web applications are accessible to all users.",
-      image: "/placeholder.svg?height=200&width=300",
-      date: "March 10, 2025",
-      author: "Morgan Lee",
-      category: "Accessibility",
-    },
-  ],
-  nextPost: {
-    title: "The Future of Frontend Development: What's Next After React?",
-    slug: "/blog/future-of-frontend-development",
-  },
-  previousPost: {
-    title: "10 Performance Optimization Techniques Every Developer Should Know",
-    slug: "/blog/performance-optimization-techniques",
-  },
-};
-
-export default function BlogDetail() {
   const theme = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -308,9 +111,12 @@ export default function BlogDetail() {
     }
   }, [isLoading]);
 
+
   // Scroll to section when clicking on TOC item
   const scrollToSection = (id: string) => {
+    // console.log('🚀 ~ scrollToSection ~ id:', id)
     const element = document.getElementById(id);
+    // console.log('🚀 ~ scrollToSection ~ element:', element)
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
@@ -329,16 +135,16 @@ export default function BlogDetail() {
     0.05
   )} 0%, transparent 70%)`;
 
-
   return (
     <Box
       sx={{
         bgcolor: "background.default",
         minHeight: "100vh",
+        width: "100%",
         pb: 10,
         background: backgroundGradient,
         position: "relative",
-        overflow: "hidden",
+        // overflow: "hidden",
         "&::before": {
           content: '""',
           position: "absolute",
@@ -398,7 +204,7 @@ export default function BlogDetail() {
         <AppBreadcrumbs />
 
         {/* Blog header */}
-        <HeaderBlogDetail />
+        <HeaderBlogDetail infoBlogs={infoBlogs} />
 
         {/* Hero image with advanced effects */}
         <HeroBlogDetail />
@@ -409,7 +215,11 @@ export default function BlogDetail() {
         <Grid container spacing={4}>
           {/* Main content */}
           <Grid size={{ xs: 12, md: 8 }}>
-            <ContentBlogDetail isLoading={isLoading} contentRef={contentRef} />
+            <ContentBlogDetail
+              isLoading={isLoading}
+              contentRef={contentRef}
+              infoBlogs={infoBlogs}
+            />
           </Grid>
 
           {/* Sidebar */}
@@ -425,117 +235,117 @@ export default function BlogDetail() {
               />
             ) : (
               <Fade in={true} timeout={1500}>
-                <Box>
-                  <Box
-                    component={Paper}
-                    elevation={4}
-                    sx={{
-                      p: 3,
-                      borderRadius: 4,
-                      position: "sticky",
-                      top: 100,
-                      mb: 4,
-                      background: `linear-gradient(135deg, ${alpha(
-                        theme.palette.background.paper,
-                        0.9
-                      )} 0%, ${alpha(
-                        theme.palette.background.paper,
-                        0.7
-                      )} 100%)`,
-                      backdropFilter: "blur(10px)",
-                      border: `1px solid ${alpha(
-                        theme.palette.primary.main,
-                        0.1
-                      )}`,
-                      overflow: "hidden",
-                      "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: 4,
-                        background: primaryGradient,
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      component="h2"
-                      gutterBottom
-                      sx={{
-                        fontWeight: 700,
-                        position: "relative",
-                        pb: 2,
-                        mb: 3,
-                        "&::after": {
-                          content: '""',
-                          position: "absolute",
-                          bottom: 0,
-                          left: 0,
-                          width: 40,
-                          height: 3,
-                          borderRadius: 1.5,
-                          bgcolor: theme.palette.primary.main,
-                        },
-                      }}
-                    >
-                      Table of Contents
-                    </Typography>
+                <Box sx={{ position: "sticky", top: 20 }}>
+                  {
+                    tableOfContents.length > 0 && (
+                      <Box
+                        component={Paper}
+                        elevation={4}
+                        sx={{
+                          p: 3,
+                          borderRadius: 4,
+                          mb: 4,
+                          background: `linear-gradient(135deg, ${alpha(
+                            theme.palette.background.paper,
+                            0.9
+                          )} 0%, ${alpha(
+                            theme.palette.background.paper,
+                            0.7
+                          )} 100%)`,
+                          backdropFilter: "blur(10px)",
+                          border: `1px solid ${alpha(
+                            theme.palette.primary.main,
+                            0.1
+                          )}`,
+                          overflow: "hidden",
+                          "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            height: 4,
+                            background: primaryGradient,
+                          },
+                        }}
+                      >
+                        <Typography
+                          variant="h6"
+                          component="h2"
+                          gutterBottom
+                          sx={{
+                            fontWeight: 700,
+                            position: "relative",
+                            pb: 2,
+                            mb: 3,
+                            "&::after": {
+                              content: '""',
+                              position: "absolute",
+                              bottom: 0,
+                              left: 0,
+                              width: 40,
+                              height: 3,
+                              borderRadius: 1.5,
+                              bgcolor: theme.palette.primary.main,
+                            },
+                          }}
+                        >
+                          Table of Contents
+                        </Typography>
 
-                    <Box component="nav" aria-label="table of contents">
-                      <Stack spacing={1}>
-                        {tableOfContents.map((item) => (
-                          <Button
-                            key={item.id}
-                            onClick={() => scrollToSection(item.id)}
-                            sx={{
-                              justifyContent: "flex-start",
-                              pl: item.level === 3 ? 4 : 2,
-                              py: 1,
-                              borderRadius: 2,
-                              color:
-                                activeSection === item.text
-                                  ? theme.palette.primary.main
-                                  : theme.palette.text.secondary,
-                              bgcolor:
-                                activeSection === item.text
-                                  ? alpha(theme.palette.primary.main, 0.1)
-                                  : "transparent",
-                              fontWeight:
-                                activeSection === item.text ? 600 : 400,
-                              textTransform: "none",
-                              transition: "all 0.2s ease",
-                              borderLeft:
-                                activeSection === item.text
-                                  ? `3px solid ${theme.palette.primary.main}`
-                                  : "3px solid transparent",
-                              "&:hover": {
-                                bgcolor: alpha(
-                                  theme.palette.primary.main,
-                                  0.05
-                                ),
-                                color: theme.palette.primary.main,
-                              },
-                            }}
-                          >
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                fontSize:
-                                  item.level === 3 ? "0.875rem" : "1rem",
-                                fontWeight: "inherit",
-                              }}
-                            >
-                              {item.text}
-                            </Typography>
-                          </Button>
-                        ))}
-                      </Stack>
-                    </Box>
-                  </Box>
-
-
+                        <Box component="nav" aria-label="table of contents">
+                          <Stack spacing={1}>
+                            {tableOfContents.map((item) => (
+                              <Button
+                                key={item.id}
+                                onClick={() => scrollToSection(item.id)}
+                                sx={{
+                                  justifyContent: "flex-start",
+                                  pl: item.level === 3 ? 4 : 2,
+                                  py: 1,
+                                  borderRadius: 2,
+                                  color:
+                                    activeSection === item.text
+                                      ? theme.palette.primary.main
+                                      : theme.palette.text.secondary,
+                                  bgcolor:
+                                    activeSection === item.text
+                                      ? alpha(theme.palette.primary.main, 0.1)
+                                      : "transparent",
+                                  fontWeight:
+                                    activeSection === item.text ? 600 : 400,
+                                  textTransform: "none",
+                                  transition: "all 0.2s ease",
+                                  borderLeft:
+                                    activeSection === item.text
+                                      ? `3px solid ${theme.palette.primary.main}`
+                                      : "3px solid transparent",
+                                  "&:hover": {
+                                    bgcolor: alpha(
+                                      theme.palette.primary.main,
+                                      0.05
+                                    ),
+                                    color: theme.palette.primary.main,
+                                  },
+                                }}
+                              >
+                                <Typography
+                                  variant="body2"
+                                  sx={{
+                                    fontSize:
+                                      item.level === 3 ? "0.875rem" : "1rem",
+                                    fontWeight: "inherit",
+                                  }}
+                                >
+                                  {item.text}
+                                </Typography>
+                              </Button>
+                            ))}
+                          </Stack>
+                        </Box>
+                      </Box>
+                    )
+                  }
                   <Box
                     component={Paper}
                     elevation={4}
@@ -736,3 +546,205 @@ export default function BlogDetail() {
     </Box>
   );
 }
+
+export const blogPost = {
+  title: "Understanding Modern Web Development Frameworks",
+  subtitle:
+    "A deep dive into the technologies shaping the future of web development",
+  publishDate: "April 2, 2025",
+  readTime: "8 min read",
+  views: "3.2K",
+  likes: 142,
+  comments: 38,
+  author: {
+    name: "Alex Johnson",
+    avatar: "http://localhost:3000/project/chiilbeats.png",
+    role: "Senior Developer",
+    bio: "Alex has been developing web applications for over 10 years and specializes in React and modern JavaScript frameworks. He is passionate about creating performant and accessible web experiences.",
+    twitter: "@alexjohnson",
+    website: "alexjohnson.dev",
+  },
+  categories: ["Web Development", "React", "JavaScript"],
+  tags: [
+    "frontend",
+    "frameworks",
+    "performance",
+    "architecture",
+    "best practices",
+  ],
+  heroImage: "http://localhost:3000/project/chiilbeats.png",
+  content: `
+    <p>Modern web development has evolved significantly over the past decade. Frameworks like React, Angular, and Vue have revolutionized how developers build interactive user interfaces.</p>
+    
+    <h2>The Rise of Component-Based Architecture</h2>
+    <p>One of the most significant shifts in modern web development has been the move toward component-based architecture. This approach allows developers to build encapsulated components that manage their own state, then compose them to make complex UIs.</p>
+    
+    <p>Components are reusable, which means you can use the same component in multiple places in your application, or even across different applications. This reusability leads to more consistent UIs and faster development cycles.</p>
+    
+    <figure>
+      <img src="http://localhost:3000/project/chiilbeats.png" alt="Component architecture diagram" />
+      <figcaption>Modern component architecture enables better code organization and reusability</figcaption>
+    </figure>
+    
+    <h2>State Management</h2>
+    <p>As applications grow in complexity, managing state becomes increasingly challenging. Libraries like Redux, MobX, and Recoil have emerged to help developers manage application state in a predictable way.</p>
+    
+    <p>These state management solutions provide a centralized store for all the data your application needs. This makes it easier to debug and test your application, as the data flow becomes more predictable.</p>
+    
+    <pre><code class="language-javascript">
+// Example of Redux state management
+import { createStore } from 'redux';
+
+// Reducer function
+function counterReducer(state = { count: 0 }, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+// Create store
+const store = createStore(counterReducer);
+
+// Dispatch actions
+store.dispatch({ type: 'INCREMENT' });
+console.log(store.getState()); // { count: 1 }
+    </code></pre>
+    
+    <blockquote>
+      <p>"The future of web development is about creating fast, accessible, and engaging user experiences across all devices."</p>
+      <cite>— Sarah Chen, Web Performance Engineer at Google</cite>
+    </blockquote>
+    
+    <h2>Server-Side Rendering and Static Site Generation</h2>
+    <p>Performance and SEO considerations have led to the popularity of server-side rendering (SSR) and static site generation (SSG). Frameworks like Next.js and Gatsby have made it easier to implement these techniques.</p>
+    
+    <pre><code class="language-typescript">
+// Example of a Next.js page with SSG
+import { GetStaticProps } from 'next';
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+}
+
+interface BlogPageProps {
+  posts: Post[];
+}
+
+export const getStaticProps: GetStaticProps<BlogPageProps> = async () => {
+  // Fetch data at build time
+  const res = await fetch('https://api.example.com/posts');
+  const posts = await res.json();
+  
+  return {
+    props: { posts },
+    // Re-generate at most once per hour
+    revalidate: 3600,
+  };
+};
+
+export default function BlogPage({ posts }: BlogPageProps) {
+  return (
+    <div>
+      <h1>Blog Posts</h1>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+    </code></pre>
+    
+    <p>SSR renders the HTML on the server before sending it to the client, which can lead to faster initial page loads and better SEO. SSG takes this a step further by generating HTML at build time, which can be served from a CDN for even better performance.</p>
+    
+    <h2>The Importance of Performance Optimization</h2>
+    <p>With users expecting faster and more responsive web applications, performance optimization has become a critical aspect of modern web development. Techniques like code splitting, lazy loading, and image optimization are essential for delivering a great user experience.</p>
+    
+    <p>Modern frameworks and build tools have built-in support for these optimization techniques, making it easier for developers to create high-performance applications.</p>
+    
+    <h3>Key Performance Metrics</h3>
+    <ul>
+      <li><strong>First Contentful Paint (FCP)</strong>: Measures the time from navigation to when the browser renders the first bit of content from the DOM.</li>
+      <li><strong>Largest Contentful Paint (LCP)</strong>: Measures loading performance. To provide a good user experience, LCP should occur within 2.5 seconds of when the page first starts loading.</li>
+      <li><strong>Cumulative Layout Shift (CLS)</strong>: Measures visual stability. Pages should maintain a CLS of less than 0.1.</li>
+    </ul>
+    
+    <h2>Accessibility Considerations</h2>
+    <p>Building accessible web applications is not just a nice-to-have feature—it's essential for ensuring that your application can be used by everyone, including people with disabilities.</p>
+    
+    <pre><code class="language-jsx">
+// Example of accessible React component
+import React from 'react';
+
+function AccessibleButton({ onClick, children }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Submit form"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick();
+        }
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+export default AccessibleButton;
+    </code></pre>
+
+    <p>Modern frameworks provide tools and patterns for building accessible applications, but it's up to developers to implement them correctly. This includes using semantic HTML, providing alternative text for images, ensuring sufficient color contrast, and making sure your application can be navigated using a keyboard.</p>
+  `,
+  relatedPosts: [
+    {
+      id: 1,
+      title: "Getting Started with React Hooks",
+      excerpt:
+        "Learn how to use React Hooks to simplify your components and reuse stateful logic.",
+      image: "http://localhost:3000/project/chiilbeats.png",
+      date: "March 25, 2025",
+      author: "Jamie Smith",
+      category: "React",
+    },
+    {
+      id: 2,
+      title: "CSS-in-JS: Styled Components vs. Emotion",
+      excerpt:
+        "A comparison of the two most popular CSS-in-JS libraries for React applications.",
+      image: "http://localhost:3000/project/chiilbeats.png",
+      date: "March 18, 2025",
+      author: "Taylor Wilson",
+      category: "CSS",
+    },
+    {
+      id: 3,
+      title: "Building Accessible Web Applications",
+      excerpt:
+        "Best practices for ensuring your web applications are accessible to all users.",
+      image: "http://localhost:3000/project/chiilbeats.png",
+      date: "March 10, 2025",
+      author: "Morgan Lee",
+      category: "Accessibility",
+    },
+  ],
+  nextPost: {
+    title: "The Future of Frontend Development: What's Next After React?",
+    slug: "/blog/future-of-frontend-development",
+  },
+  previousPost: {
+    title: "10 Performance Optimization Techniques Every Developer Should Know",
+    slug: "/blog/performance-optimization-techniques",
+  },
+};

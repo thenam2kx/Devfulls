@@ -19,10 +19,32 @@ declare global {
     data?: T;
   }
 
+  interface IMeta {
+    current: number;
+    pageSize: number;
+    pages: number;
+    total: number;
+  }
+
+  interface IListResponse<T> {
+    result: T[];
+    meta: IMeta;
+  }
+
   interface IBlog {
     _id: string;
     title: string;
+    slug: string;
     content: string;
+    author: {
+      _id: string;
+      email: string;
+      fullname: string;
+    },
+    tags: string[];
+    views: number;
+    isPublished: boolean;
+    avatar: string;
   }
 
 }

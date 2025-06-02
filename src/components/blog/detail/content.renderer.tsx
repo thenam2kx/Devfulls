@@ -1,8 +1,10 @@
 "use client";
-
-import React from "react";
 import DOMPurify from "isomorphic-dompurify";
 import Box from "@mui/material/Box";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import HighlightJsSetup from "./highlightjs.setup";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import CodeHighlight from "./code.highlight";
 
 // This component safely renders blog content with code highlighting
 const ContentRenderer = ({ content }: { content: string }) => {

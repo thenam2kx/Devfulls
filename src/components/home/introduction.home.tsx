@@ -1,93 +1,98 @@
-import Grid from '@mui/material/Grid2'
+'use client'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import { IconButton } from '@mui/material'
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
+import { motion } from 'framer-motion'
+
+// Create motion components
+const MotionTypography = motion(Typography)
+const MotionButton = motion(Button)
+const MotionIconButton = motion(IconButton)
 
 const Introduction = () => {
-
   return (
-    <Box component='section' sx={{ position: 'relative', my: { xs: 5, md: 9 } }}>
-      <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 9 }}>
-          <Typography sx={{
-            alignItems: { xs: 'center', md: 'left' },
-            fontSize: '32px',
-            fontWeight: 500
-          }}>
-            LET ME <span style={{ color: '#FF4081' }}> INTRODUCE </span> MYSELF
-          </Typography>
-
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
-            mt: '28px'
-          }}>
-            <Typography variant='body1'>
-              I fell in love with programming and I have at least learnt something, I think… 🤷‍♂️
-            </Typography>
-            <Typography variant='body1'>
-            I am fluent in classics like
-              <i>
-                <b style={{ color: '#FF4081' }}> PHP and Javascript. </b>
-              </i>
-            </Typography>
-            <Typography variant='body1'>
-            My field of Interest&apos;s are building new &nbsp;
-              <i>
-                <b style={{ color: '#FF4081' }}>Web Technologies and Products</b>
-              </i>
-            </Typography>
-            <Typography variant='body1'>
-              Whenever possible, I also apply my passion for developing products with
-              <i>
-                <b style={{ color: '#FF4081' }}>&nbsp;Express </b>
-              </i>
-              and
-              <i>
-                <b style={{ color: '#FF4081' }}> Node.js</b>
-              </i>
-            </Typography>
-          </Box>
-        </Grid>
-
-        <Grid size={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-          {/* <Tilt> */}
-            <Box component={'img'} src={'http://localhost:3000/avatar.svg'} style={{ maxWidth: '100%' }} alt='avatar' />
-          {/* </Tilt> */}
-        </Grid>
-      </Grid>
-
-      <Box
-        sx={{
-          display: { xs: 'none', md: 'flex' },
-          mt: 2,
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'absolute',
-          right: '-50px',
-          top: '50px'
-        }}
+    <Box
+      component='section'
+      sx={{
+        position: 'relative',
+        height: 'calc(100vh - 100px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <MotionTypography
+        variant='h1'
+        sx={{ color: 'white', fontWeight: 700, mb: 3, fontSize: '4.5rem' }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <Typography
-          variant='h6'
-          sx={{
-            backgroundColor: '#1a1443',
-            width: 'fit-content',
-            color: 'white',
-            transform: 'rotate(90deg)',
-            padding: '0.5rem 1.25rem',
-            fontSize: '1.25rem',
-            borderRadius: '0.375rem',
-            textTransform: 'uppercase'
-          }}
+        Hi, I’m <span style={{ color: 'rgb(255, 64, 129)' }}>The Nam</span>.
+      </MotionTypography>
+      <MotionTypography
+        variant='h2'
+        sx={{ color: 'white', fontWeight: 500, mb: 3, fontSize: '2.5rem' }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        Full Stack Developer
+      </MotionTypography>
+      <MotionTypography
+        variant='body1'
+        sx={{ color: 'white', fontWeight: 500, mb: 3, fontSize: '1.2rem' }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        I build beautiful, responsive, and user-friendly web applications with modern technologies.
+      </MotionTypography>
+
+      <Stack spacing={2} direction="row">
+        <MotionButton
+          variant="contained"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          size='large'
         >
-            About me
-        </Typography>
-        <Box sx={{
-          height:'9rem',
-          width: '2px',
-          backgroundColor: '#1a1443'
-        }}/>
+          My Experian
+        </MotionButton>
+        <MotionButton
+          variant="outlined"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          size='large'
+        >
+          Contact me
+        </MotionButton>
+      </Stack>
+
+      <Box sx={{
+        position: 'absolute',
+        bottom: 20,
+        left: '50%',
+        transform: 'translateX(-50%)',
+      }}>
+        <MotionIconButton
+          aria-label="down"
+          initial={{ y: 0 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          sx={{ borderRadius: '50%', padding: 1.3, backgroundColor: 'rgb(255 255 255 / 10%)' }}
+        >
+          <KeyboardDoubleArrowDownIcon />
+        </MotionIconButton>
       </Box>
     </Box>
   )

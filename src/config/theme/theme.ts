@@ -52,7 +52,7 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#ffd11a",
+      main: "rgb(255, 64, 129)",
       contrastText: "#1a1a1a",
     },
     secondary: {
@@ -75,7 +75,7 @@ const theme = createTheme({
       notificationBorder: "#262626",
       activeLink: "#ffffff",
       inactiveLink: "#98989a",
-      buttonHover: "#e6bc18",
+      buttonHover: "rgb(255, 64, 129)",
     },
   },
   typography: {

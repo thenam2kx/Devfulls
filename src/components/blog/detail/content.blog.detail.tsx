@@ -2,20 +2,20 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Fade from "@mui/material/Fade";
 import Skeleton from "@mui/material/Skeleton";
-import { blogPost } from "./BlogDetail"; // Assuming this is where your blog post data is coming from
-import ContentRenderer from "./content.renderer"; // Assuming this is the component that renders the blog content
-import TagBlog from "./tag.blog"; // Assuming this is the component that renders the tags
-import AuthorBioBlog from "./author.bio.blog"; // Assuming this is the component that renders the author bio
-import NextPrevNav from "./next.prev.nav"; // Assuming this is the component that renders the next/prev navigation
+import ContentRenderer from "./content.renderer";
+import TagBlog from "./tag.blog";
+import AuthorBioBlog from "./author.bio.blog";
+import NextPrevNav from "./next.prev.nav";
 
 interface IProps {
   isLoading: boolean;
   contentRef: React.RefObject<HTMLDivElement | null>;
+  infoBlogs: IBlog
 }
 
 
 const ContentBlogDetail = (props: IProps) => {
-  const { contentRef, isLoading } = props
+  const { contentRef, isLoading, infoBlogs } = props
 
   return (
     <>
@@ -40,7 +40,7 @@ const ContentBlogDetail = (props: IProps) => {
           <Box>
             {/* Blog content with enhanced typography and code highlighting */}
             <Box ref={contentRef}>
-              <ContentRenderer content={blogPost.content} />
+              <ContentRenderer content={infoBlogs.content} />
             </Box>
 
             {/* Tags section */}
