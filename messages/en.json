@@ -9,7 +9,7 @@
       "about": "About",
       "contact": "Contact",
       "blog": "Blog",
-      "resources": "Resources",
+      "project": "Project",
       "services": "Services"
     },
     "btn": {
@@ -18,5 +18,11 @@
       "logout": "Logout",
       "contact": "Contact me"
     }
+  },
+
+  "projects": {
+    "title": "Projects",
+    "description": "A collection of my recent work spanning web applications, design systems, and interactive experiences.",
+    "empty": "No projects found"
   }
 }

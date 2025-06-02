@@ -56,7 +56,8 @@ const NavLink = styled(Typography)(({ theme }) => ({
 
 const ContactButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
+  color: '#FFFFFF',
+  // color: theme.palette.primary.contrastText,
   fontWeight: "bold",
   padding: "8px 24px",
   borderRadius: theme.shape.borderRadius,
@@ -129,7 +130,7 @@ const navItems = useMemo(() => [
   { name: t("menu.about"), href: "/about" },
   { name: t("menu.contact"), href: "/contact" },
   { name: t("menu.blog"), href: "/blog" },
-  { name: t("menu.resources"), href: "/resources" },
+  { name: t("menu.project"), href: "/projects" },
   { name: t("menu.services"), href: "/services" },
 ], [t])
 

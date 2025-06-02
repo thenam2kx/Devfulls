@@ -3,7 +3,7 @@ import { Box, Container, Typography, Link as MuiLink, Divider, useMediaQuery } f
 import Link from "next/link"
 import { styled, useTheme } from "@mui/material/styles"
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 
 // Styled components
 const FooterLink = styled(Typography)(({ theme }) => ({

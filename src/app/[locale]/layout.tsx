@@ -11,6 +11,7 @@ import AppFooter from "@/components/app/app.footer";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import SplashCursor from "@/components/app/app.cursor";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -54,6 +55,7 @@ export default async function LocaleLayout({
                 <AppHeader />
                 {children}
                 <AppFooter />
+                <SplashCursor />
               </AppContextProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
