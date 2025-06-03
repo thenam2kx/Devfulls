@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
         port: '3000',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.reactbits.dev',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };

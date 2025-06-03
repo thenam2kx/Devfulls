@@ -24,5 +24,33 @@
     "title": "Dự án",
     "description": "Một bộ sưu tập các công việc gần đây của tôi trải dài trên các ứng dụng web, hệ thống thiết kế và trải nghiệm tương tác.",
     "empty": "Không tìm thấy dự án"
+  },
+
+  "contact": {
+    "title": "Liên hệ với tôi",
+    "description": "Bạn có một dự án trong đầu hoặc muốn thảo luận về những cơ hội tiềm năng? Tôi rất muốn nghe từ bạn!",
+    "form": {
+      "title": "Gửi cho tôi một tin nhắn",
+      "name": "Tên của bạn",
+      "email": "Email của bạn",
+      "message": "Tin nhắn của bạn",
+      "submit": "Gửi tin nhắn"
+    },
+    "placeholder": {
+      "name": "Nhập tên của bạn",
+      "email": "Nhập email của bạn",
+      "message": "Nhập tin nhắn của bạn"
+    },
+    "talk": {
+      "title": "Hãy nói về dự án của bạn",
+      "description": "Tôi quan tâm đến các cơ hội tự do - đặc biệt là những dự án tham vọng hoặc lớn. Tuy nhiên, nếu bạn có yêu cầu hoặc câu hỏi khác, đừng ngần ngại liên hệ với tôi."
+    },
+    "info": {
+      "email": "Email ",
+      "phone": "Điện thoại",
+      "address": "Địa chỉ"
+    },
+    "success": "Cảm ơn bạn đã gửi tin nhắn! Tôi sẽ phản hồi sớm.",
+    "error": "Đã có lỗi xảy ra khi gửi tin nhắn của bạn. Vui lòng thử lại sau."
   }
 }

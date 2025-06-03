@@ -128,10 +128,10 @@ const AppHeader = () => {
 const navItems = useMemo(() => [
   { name: t("menu.home"), href: "/" },
   { name: t("menu.about"), href: "/about" },
-  { name: t("menu.contact"), href: "/contact" },
-  { name: t("menu.blog"), href: "/blog" },
   { name: t("menu.project"), href: "/projects" },
   { name: t("menu.services"), href: "/services" },
+  { name: t("menu.blog"), href: "/blog" },
+  { name: t("menu.contact"), href: "/contact" },
 ], [t])
 
   const handleDrawerToggle = () => {

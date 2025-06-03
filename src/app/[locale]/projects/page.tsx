@@ -20,7 +20,7 @@ import { projectsData } from '@/services/mock';
 import { useTranslations } from 'next-intl';
 
 const MotionBox = motion(Box);
-export const MotionCard = motion(Card);
+const MotionCard = motion(Card);
 const MotionTypography = motion(Typography);
 
 const ProjectsPage = () => {
