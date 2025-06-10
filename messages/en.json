@@ -1,0 +1,72 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+
+  "header": {
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "blog": "Blog",
+      "project": "Project",
+      "services": "Services"
+    },
+    "btn": {
+      "login": "Login",
+      "register": "Register",
+      "logout": "Logout",
+      "contact": "Contact me"
+    }
+  },
+
+  "projects": {
+    "title": "Projects",
+    "description": "A collection of my recent work spanning web applications, design systems, and interactive experiences.",
+    "empty": "No projects found"
+  },
+
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!",
+    "form": {
+      "title": "Send me a message",
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "placeholder": {
+      "name": "Enter your name",
+      "email": "Enter your email",
+      "message": "Type your message here"
+    },
+    "talk": {
+      "title": "Let's talk about your project",
+      "description": "I'm interested in freelance opportunities – especially ambitious or large projects. However, if you have other requests or questions, don't hesitate to contact me.!"
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Location"
+    },
+    "success": "Thank you for your message! I'll get back to you soon.",
+    "error": "There was an error sending your message. Please try again later."
+  },
+
+  "about": {
+    "title": "About Me",
+    "subtitle": "A Passionate Developer Creating Digital Excellence",
+    "description": {
+      "desc_1": "I'm a dedicated full-stack developer with over 5 years of experience in building modern, responsive, and performant web applications. With expertise in both front-end and back-end technologies, I bridge the gap between design and functionality.",
+      "desc_2": "My journey in technology began with a deep curiosity about how digital products shape our daily lives. This curiosity has evolved into a passion for creating seamless user experiences that not only look beautiful but also function flawlessly.",
+      "desc_3": "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities to recharge my creative energy."
+    },
+    "job_title": "Web Developer",
+    "experience": "Years Experience",
+    "projects": "Projects Completed",
+    "customers": "Happy Clients",
+    "btn": "Contact me"
+  }
+}

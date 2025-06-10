@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
-import i18nConfig from "./next-i18next.config";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-  // Config for next-i18next
-  i18n: i18nConfig.i18n,
-
-  /* config options here */
   reactStrictMode: true,
   modularizeImports: {
     '@mui/icons-material': {
@@ -17,13 +13,21 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'source.unsplash.com',
-        port: '',
-        pathname: '/random',
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.reactbits.dev',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);
