@@ -26,8 +26,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio - Create by Devfulls",
-  description: "Create by Devfulls",
+  title: "Devfulls - Create by Thenam2kx",
+  description: "Create by Thenam2kx",
 };
 
 export default async function LocaleLayout({
